@@ -1,3 +1,6 @@
+
+
+
 <?php // Add scripts and stylesheets
 function startwordpress_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.6' );
@@ -27,7 +30,7 @@ add_theme_support( 'title-tag' );
 add_theme_support( 'post-thumbnails' );
 
 
-// Creating Custom Book Post Object
+// Adding Book Custom Post Type
 
 
 function create_post_your_post() {
@@ -57,7 +60,7 @@ function create_post_your_post() {
 add_action( 'init', 'create_post_your_post' );
 
 
-// Adding Meta Box for Book Post Object
+// Adding Meta Box for Custom Fields
 
 function add_your_fields_meta_box() {
 	add_meta_box(
@@ -65,19 +68,59 @@ function add_your_fields_meta_box() {
 		'Your Fields', // $title
 		'show_your_fields_meta_box', // $callback
 		'your_post', // $screen
-		'normal', // 
-		'high' 
+		'normal', // $context
+		'high' // $priority
 	);
 }
 add_action( 'add_meta_boxes', 'add_your_fields_meta_box' );
 
+// Save Fields to Database
 
-// Remove Posts from Admin Menu
- 
+function show_your_fields_meta_box() {
+	global $post;  
+		$meta = get_post_meta( $post->ID, 'your_fields', true ); ?>
 
-function post_remove ()     
-{ 
-   remove_menu_page('edit.php');
+	<input type="hidden" name="your_meta_box_nonce" value="<?php echo wp_create_nonce( basename(__FILE__) ); ?>">
+	
+	<!-- Author Input -->
+    <p>
+		<label for="your_fields[text]">Author</label>
+		<br>
+		<input type="text" name="your_fields[text]" id="your_fields[text]" class="regular-text" value="<?php  if (is_array($meta) && isset($meta['text'])){ echo $meta['text']; } ?>">
+	</p>
+
+	<?php }
+
+
+
+
+
+
+function save_your_fields_meta( $post_id ) {   
+	// verify nonce
+	if ( !wp_verify_nonce( $_POST['your_meta_box_nonce'], basename(__FILE__) ) ) {
+		return $post_id; 
+	}
+	// check autosave
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return $post_id;
+	}
+	// check permissions
+	if ( 'page' === $_POST['post_type'] ) {
+		if ( !current_user_can( 'edit_page', $post_id ) ) {
+			return $post_id;
+		} elseif ( !current_user_can( 'edit_post', $post_id ) ) {
+			return $post_id;
+		}  
+	}
+	
+	$old = get_post_meta( $post_id, 'your_fields', true );
+	$new = $_POST['your_fields'];
+
+	if ( $new && $new !== $old ) {
+		update_post_meta( $post_id, 'your_fields', $new );
+	} elseif ( '' === $new && $old ) {
+		delete_post_meta( $post_id, 'your_fields', $old );
+	}
 }
-
-add_action('admin_menu', 'post_remove');   
+add_action( 'save_post', 'save_your_fields_meta' );	

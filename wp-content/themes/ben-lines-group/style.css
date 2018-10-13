@@ -209,6 +209,30 @@ h6, .h6 {
 
 /* Homepage Styling */
 
-.intro-text {
+.intro-text, .book-post {
   margin: 40px 0;
 }
+
+.col-md-4.book-overlays {
+  height: 200px;
+  position: relative;
+}
+
+.book-overlays h3 {
+  color: #fff;
+  text-align: center;
+  z-index: 3;
+  text-transform: uppercase;
+  position: relative;
+  top: 40%;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.col-md-4.inner-column {
+  padding: 0;
+  height: 200px;
+
+}
+
+/* Book Single */
