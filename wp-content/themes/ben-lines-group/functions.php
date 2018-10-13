@@ -70,3 +70,14 @@ function add_your_fields_meta_box() {
 	);
 }
 add_action( 'add_meta_boxes', 'add_your_fields_meta_box' );
+
+
+// Remove Posts from Admin Menu
+ 
+
+function post_remove ()     
+{ 
+   remove_menu_page('edit.php');
+}
+
+add_action('admin_menu', 'post_remove');   

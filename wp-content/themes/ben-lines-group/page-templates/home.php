@@ -21,13 +21,16 @@
         </div>
     </div>
 
-	<div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 blog-main text-center">
+                <div class="intro-text">
+                    <h2> Welcome to the Lines Group Book Store </h2>
+                    <p> Please visit out books section to browse our current stock </p>
+                </div>    
+            </div> <!-- /.blog-main -->
 
-		<div class="col-sm-12 blog-main">
+        </div> <!-- /.row -->
 
-		</div> <!-- /.blog-main -->
-
-	</div> <!-- /.row -->
-
-<?php get_footer(); ?>
+    <?php get_footer(); ?>
 

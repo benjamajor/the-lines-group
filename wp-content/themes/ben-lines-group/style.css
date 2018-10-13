@@ -65,6 +65,10 @@ h6, .h6 {
   color: #fff;
 }
 
+.blog-nav {
+  text-align: center;
+}
+
 /* Active state gets a caret at the bottom */
 .blog-nav .active {
   color: #fff;
@@ -201,4 +205,10 @@ h6, .h6 {
   background-color: #0e0e2766;
   height: 100%;
   width: 100%;
+}
+
+/* Homepage Styling */
+
+.intro-text {
+  margin: 40px 0;
 }
