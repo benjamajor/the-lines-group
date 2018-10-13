@@ -46,14 +46,14 @@
                <div class="col-md-4  inner-column" style="background-image: url('<?php echo get_site_url(); ?>/wp-content/themes/ben-lines-group/assets/non-fiction.jpg'); background-size: cover;">
                     <div class="book-overlays">
                         <div class="overlay-color"> </div>
-                        <h3> Browse Fiction</h3>
+                        <h3> Browse Non-Fiction</h3>
                     </div>    
                 </div>
 
                 <div class="col-md-4  inner-column" style="background-image: url('<?php echo get_site_url(); ?>/wp-content/themes/ben-lines-group/assets/all-books.jpg'); background-size: cover; background-position: bottom;">
                     <div class="book-overlays">
                         <div class="overlay-color"> </div>
-                        <h3> Browse Fiction</h3>
+                        <h3> Browse All</h3>
                     </div>    
                 </div>
            </div>
