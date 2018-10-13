@@ -3,7 +3,7 @@
  */
 
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: 'Roboto Condensed', sans-serif;, "Times New Roman", Times, serif;
   color: #555;
 }
 
@@ -14,7 +14,7 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   margin-top: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #333;
 }
@@ -36,7 +36,7 @@ h6, .h6 {
  */
 
 .blog-masthead {
-  background-color: #428bca;
+  background-color: #a7601b;
   -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
           box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
@@ -101,6 +101,14 @@ h6, .h6 {
 .blog-description {
   font-size: 20px;
   color: #999;
+}
+
+.blog-nav a {
+
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 500;
+
 }
 
 
@@ -173,4 +181,24 @@ h6, .h6 {
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
+}
+
+/* Hero Image Styling */
+
+.hero-image h1 {
+  color: #fff;
+  position: absolute;
+  top: 30%;
+  text-transform: uppercase;
+  font-size: 70px;
+  font-weight: 700;
+}
+
+/* Overlay for Hero */
+
+.overlay-color {
+  position: absolute;
+  background-color: #0e0e2766;
+  height: 100%;
+  width: 100%;
 }

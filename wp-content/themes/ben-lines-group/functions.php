@@ -27,4 +27,46 @@ add_theme_support( 'title-tag' );
 add_theme_support( 'post-thumbnails' );
 
 
+// Creating Custom Book Post Object
 
+
+function create_post_your_post() {
+	register_post_type( 'your_post',
+		array(
+			'labels'       => array(
+				'name'       => __( 'Your Post' ),
+			),
+			'public'       => true,
+			'hierarchical' => true,
+			'has_archive'  => true,
+			'supports'     => array(
+				'title',
+				'editor',
+				'excerpt',
+				'thumbnail',
+			), 
+			'taxonomies'   => array(
+				'post_tag',
+				'category',
+			)
+		)
+	);
+	register_taxonomy_for_object_type( 'category', 'your_post' );
+	register_taxonomy_for_object_type( 'post_tag', 'your_post' );
+}
+add_action( 'init', 'create_post_your_post' );
+
+
+// Adding Meta Box for Book Post Object
+
+function add_your_fields_meta_box() {
+	add_meta_box(
+		'your_fields_meta_box', // $id
+		'Your Fields', // $title
+		'show_your_fields_meta_box', // $callback
+		'your_post', // $screen
+		'normal', // 
+		'high' 
+	);
+}
+add_action( 'add_meta_boxes', 'add_your_fields_meta_box' );
